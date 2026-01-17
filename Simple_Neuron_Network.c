@@ -154,49 +154,152 @@
 // ----------------------------- Adaptive Neuron Model ----------------------------
 
 
-#include<stdio.h>
+// #include<stdio.h>
 
-int step_function(float net){
-    return(net>0) ? 1 : 0;
+// int step_function(float net){
+//     return(net>0) ? 1 : 0;
+// }
+
+// int main(){
+
+//     // Traning data for AND gate
+//     int x[4][2] = {{0.0},{0,1},{1,0},{1,1}};
+//     int targe[4] = {0,0,0,0};    
+//     float w[2] = {0.0,0.0};    // initial weight    
+//     float bias = -0.5;         // initial bias
+
+//     float learning_rate=0.1;
+//     int epochs=10;
+//     int epoch,i;
+//     float net;
+//     int output;
+//     int error;
+
+//     for (epoch = 0;epoch<epochs; epoch++){
+//         printf("\n Epoch %d \n",epoch+1);
+
+//         for(i=0;i<4;i++){
+//             //comput net input
+//             net=x[1][0] *  w[0] +x[i][1] * w[1] +bias;
+//             output=step_function(net);
+
+//             // comput error
+//             error=targe[i] - output;
+
+//             //update wights and bias
+
+//             w[0] = w[0] + learning_rate * error * x[i][0];
+//             w[1] = w[1] + learning_rate * error * x[i][1];
+//             bias = bias +learning_rate * error;
+
+//             printf("input %d %d output %d error : %d w1: %.2f w2: %.2f bais: %.2f\n",x[i][0],x[i][1],output,error,w[0],w[1],bias);
+//         }
+//     }
+
+//     printf("\nfinal weight: w1 = %.2f,  w2 = %.2f, bais =  %.2f\n",w[0],w[1],bias);
+
+//     return 0;
+// }
+
+
+// ----------------------------- Feedback Nerural Network ----------------------------
+
+
+// #include<stdio.h>
+// #include <math.h>
+
+
+//     double sigmoid(double x){
+//         return 1.0/(1.9 + exp(-x));
+        
+//     }
+    
+// int main(){
+//     //inputs
+//     double input[2] = {1.0, 0.5};
+    
+//     double weight_input_hidden[2][2] = {
+//         {0.15,0.20},
+//         {0.25,0.30}
+//     };
+
+// //bias hidden layer
+//     double bias_hidden[2] = {0.35,0.35};
+  
+//   //weight from hiddern to output layer
+//   double weight_hidden_output[2] =  {0.40,0.45};
+  
+//   //bias for output layer
+//   double bias_output = 0.60;
+  
+//   //hidden layer output
+//   double hidden[2];
+  
+//   //foreard pass: input--> hidden
+//   for (int i=0;i<2;i++){
+//       hidden[i]=bias_hidden[i];
+//       for(int j=0;j<2;j++){
+//           hidden[i]+=input[j] * weight_input_hidden[j][i];
+//       }
+//       hidden[i]=sigmoid(hidden[i]);
+//   }
+
+//   //forward pass: hidden --> output
+//   double output = bias_output;
+//   for(int i=0;i < 2;i++){
+//     output += hidden[i] * weight_hidden_output[i];
+//   }
+//   output=sigmoid(output);
+
+//   //print result
+//   printf("output of the neural network: %.6f\n",output);
+
+//   return 0;
+// }
+  
+// ----------------------------- Feedback Nerural Network prime number----------------------------
+
+#include <stdio.h>
+
+// activation function (simple linear)
+float activation(float x) {
+    return x;
 }
 
-int main(){
+int main() {
+    float input[5];
+    float weight_input;
+    int n[100];
+    float weight_feedback = 0.4;
+    float output = 0.0;   // initial previous output
 
-    // Traning data for AND gate
-    int x[4][2] = {{0.0},{0,1},{1,0},{1,1}};
-    int targe[4] = {0,0,0,0};    
-    float w[2] = {0.0,0.0};    // initial weight    
-    float bias = -0.5;         // initial bias
+    // take weight input
+    printf("Enter n: ");
+    scanf("%f", &n);
 
-    float learning_rate=0.1;
-    int epochs=10;
-    int epoch,i;
-    float net;
-    int output;
-    int error;
-
-    for (epoch = 0;epoch<epochs; epoch++){
-        printf("\n Epoch %d \n",epoch+1);
-
-        for(i=0;i<4;i++){
-            //comput net input
-            net=x[1][0] *  w[0] +x[i][1] * w[1] +bias;
-            output=step_function(net);
-
-            // comput error
-            error=targe[i] - output;
-
-            //update wights and bias
-
-            w[0] = w[0] + learning_rate * error * x[i][0];
-            w[1] = w[1] + learning_rate * error * x[i][1];
-            bias = bias +learning_rate * error;
-
-            printf("input %d %d output %d error : %d w1: %.2f w2: %.2f bais: %.2f\n",x[i][0],x[i][1],output,error,w[0],w[1],bias);
-        }
+    // take input values from user
+    printf("Enter  input values:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%f", &n[i]);
     }
+    
+    int isprime[n];
+    
+     for (i = 1; i <= n; i++) {
 
-    printf("\nfinal weight: w1 = %.2f,  w2 = %.2f, bais =  %.2f\n",w[0],w[1],bias);
+
+    printf("\nTime\tInput\tOutput\n");
+
+    for (int t = 0; t < 5; t++) {
+        output = activation(
+            input[t] * weight_input + output * weight_feedback
+        );
+        printf("%d\t%.2f\t%.2f\n", t, input[t], output);
+    }
 
     return 0;
 }
+
+
+
+
