@@ -1,3 +1,9 @@
+import pandas as pd
+import numpy as np
+import math
+#------------------------------------------------------------------------
+# 1.Perceptron Learning Algorithm for AND gate
+
 # def mcculloch_pitts(x, w, n, thr):
 #     total_sum = 0
 #     for i in range(n):
@@ -27,11 +33,7 @@
 
 
 #------------------------------------------------------------------------
-
-
-import pandas as pd
-import numpy as np
-import math
+# 2.Perceptron Learning Algorithm 
 
 
 # input = [[0,0],[0,1],[1,0],[1,1]]
@@ -61,71 +63,84 @@ import math
 
 
 #------------------------------------------------------------------------
-#Simple Loan Eligibility Checker (classification)
+#3.Simple Loan Eligibility Checker (classification)
 
-data=[
-    [45000, 5, 0],
-    [60000, 10, 1],
-    [35000, 3, 0],
-    [80000, 15, 1],
-    [120000, 20, 1],
-    [30000, 2, 0]
-]
+# data=[
+#     [45000, 5, 0],
+#     [60000, 10, 1],
+#     [35000, 3, 0],
+#     [80000, 15, 1],
+#     [120000, 20, 1],
+#     [30000, 2, 0]
+# ]
 
-# scaling factors
-income_scale=10000
-age_scale=100
+# # scaling factors
+# income_scale=10000
+# age_scale=100
+
+# #Initial weight and bias
+# w=[0,0]
+# b=0
+# learning_rate=0.01
+# epochs=500 # more epochs for better traning
+
+# #sigmoid function
+
+# def sigmoid(x):
+#     return 1/(1+math.exp(-x))
+
+# #Traning using basic gradient descent
+
+# for epoch in range(epochs):
+#     for d in data:
+#         income,age,target = d
+#         x1 = income/income_scale
+#         x2 = age/age_scale
+#         z = w[0] * x1 + w[1] * x2 +b
+#         y=sigmoid(z)
+
+#         error = target - y
+
+#         # weight update
+
+#         w[0] += learning_rate *  error * x1
+#         w[1] += learning_rate * error * x2
+#         b+=learning_rate * error
+
+# print("traning complete")
+# print(f"Weight: {w}, Bias: {b}\n")
+
+# #test user input
+# while True:
+
+#     income = float(input("Enter your annual income: "))
+#     age = float(input("Enter your age: "))
+
+#     x1 = income/income_scale
+#     x2 = age/age_scale
+
+#     output = sigmoid(w[0] * x1 + w[1] * x2 +b)
+
+#     #treshold 0.5
+#     if output >= 0.5:
+#         print('Congratulations! You are eligible for the loan.')
+
+#     else:
+#         print("sorry, you are not eligible for loan.")
 
 
-#Initial weight and bias
-w=[0,0]
-b=0
-learning_rate=0.01
-epochs=500 # more epochs for better traning
+#------------------------------------------------------------------------
+#4.Daily Savings Predictor
+#Collect past savings 
 
-#sigmoid function
+savings = []
+num_days = 3
+for i in range(num_days):
+    amount  = float(input(f"Enter savings for day {i+1} (INR) : "))
+    savings.append(amount)
 
-def sigmoid(x):
-    return 1/(1+math.exp(-x))
+# Training data: inputs = previous days, target = next day savings
 
-#Traning using basic gradient descent
-
-for epoch in range(epochs):
-    for d in data:
-        income,age,target=d
-        x1=income/income_scale
-        x2=age/age_scale
-        z=w[0] * x1 + w[1] * x2 +b
-        y=sigmoid(z)
-
-        error = target - y
-
-        # weight update
-
-        w[0] += learning_rate *  error * x1
-        w[1] += learning_rate * error * x2
-        b+=learning_rate * error
-
-print("traning complete")
-print(f"Weight: {w}, Bias: {b}\n")
-
-#test user input
-while True:
-
-    income=float(input("Enter your annual income: "))
-    age=float(input("Enter your age: "))
-
-    x1=income/income_scale
-    x2=age/age_scale
-
-    output=sigmoid(w[0] * x1 + w[1] * x2 +b)
-
-    #treshold 0.5
-    if output >= 0.5:
-        print('Congratulations! You are eligible for the loan.')
-
-    else:
-        print("sorry, you are not eligible for loan.")
 
 
 
