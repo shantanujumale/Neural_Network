@@ -1,0 +1,50 @@
+// ----------------------------- Adaptive Neuron Model ----------------------------
+
+
+// #include<stdio.h>
+
+// int step_function(float net){
+//     return(net>0) ? 1 : 0;
+// }
+
+// int main(){
+
+//     // Traning data for AND gate
+//     int x[4][2] = {{0.0},{0,1},{1,0},{1,1}};
+//     int targe[4] = {0,0,0,0};    
+//     float w[2] = {0.0,0.0};    // initial weight    
+//     float bias = -0.5;         // initial bias
+
+//     float learning_rate=0.1;
+//     int epochs=10;
+//     int epoch,i;
+//     float net;
+//     int output;
+//     int error;
+
+//     for (epoch = 0;epoch<epochs; epoch++){
+//         printf("\n Epoch %d \n",epoch+1);
+
+//         for(i=0;i<4;i++){
+//             //comput net input
+//             net=x[1][0] *  w[0] +x[i][1] * w[1] +bias;
+//             output=step_function(net);
+
+//             // comput error
+//             error=targe[i] - output;
+
+//             //update wights and bias
+
+//             w[0] = w[0] + learning_rate * error * x[i][0];
+//             w[1] = w[1] + learning_rate * error * x[i][1];
+//             bias = bias +learning_rate * error;
+
+//             printf("input %d %d output %d error : %d w1: %.2f w2: %.2f bais: %.2f\n",x[i][0],x[i][1],output,error,w[0],w[1],bias);
+//         }
+//     }
+
+//     printf("\nfinal weight: w1 = %.2f,  w2 = %.2f, bais =  %.2f\n",w[0],w[1],bias);
+
+//     return 0;
+// }
+
