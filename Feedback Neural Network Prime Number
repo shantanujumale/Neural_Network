@@ -1,0 +1,42 @@
+// ----------------------------- Feedback Nerural Network prime number----------------------------
+
+#include <stdio.h>
+
+// activation function (simple linear)
+float activation(float x) {
+    return x;
+}
+
+int main() {
+    float input[5];
+    float weight_input;
+    int n[100];
+    float weight_feedback = 0.4;
+    float output = 0.0;   // initial previous output
+
+    // take weight input
+    printf("Enter n: ");
+    scanf("%f", &n);
+
+    // take input values from user
+    printf("Enter  input values:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%f", &n[i]);
+    }
+    
+    int isprime[n];
+    
+     for (i = 1; i <= n; i++) {
+
+
+    printf("\nTime\tInput\tOutput\n");
+
+    for (int t = 0; t < 5; t++) {
+        output = activation(
+            input[t] * weight_input + output * weight_feedback
+        );
+        printf("%d\t%.2f\t%.2f\n", t, input[t], output);
+    }
+
+    return 0;
+}
