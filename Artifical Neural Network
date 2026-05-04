@@ -1,0 +1,36 @@
+// --------------------------------- Artifical Neuron ------------------------------
+
+
+// #include<stdio.h>
+
+// int main() {
+    
+//     float x1=1.0;
+//     float x2=0.0;
+
+//     float w1=0.7;
+//     float w2=0.5;
+
+//     float bias=-0.2;
+//     float net;
+//     int output;
+
+//     net = (x1 * w1) + (x2 * w2) + bias;
+
+//     if (net>=0){
+//         output = 1;
+    
+//     }
+//     else{
+//         output = 0;
+
+//     }
+//     printf("Input1 = %.1f, x2 = %.1f\n",x1,x2);
+//     printf("net input = %.2f\n",net);
+//     printf("neural network output = %d\n",output);
+
+
+    
+//     return 0;
+// }
+
